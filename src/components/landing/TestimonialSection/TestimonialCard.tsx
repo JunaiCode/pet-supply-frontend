@@ -21,7 +21,7 @@ export const TestimonialCard: FC<TestimonialCardProps> = ({ name, quote }) => {
         <circle cx="36" cy="14" r="4" />
         <circle cx="44" cy="20" r="4" />
       </svg>
-      <p className="text-lg text-gray-700 mb-4 italic">"{quote}"</p>
+      <p className="text-lg text-gray-700 mb-4 italic">&quot;{quote}&quot;</p>
       <p className="text-sm font-semibold text-pink-600">{name}</p>
     </div>
   );
