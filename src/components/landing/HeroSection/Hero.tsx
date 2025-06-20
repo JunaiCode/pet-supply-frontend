@@ -1,8 +1,14 @@
 // src/components/landing/Hero.tsx
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 
 export const Hero = () => {
+  const router = useRouter();
+
+  const goToProducts = () => {
+    router.push('/products');
+  };
   return (
     <section className="relative min-h-screen bg-gradient-to-br from-purple-300 to-white flex flex-col items-center justify-center text-center px-6">
       {/* Logo centrado arriba */}
@@ -24,7 +30,7 @@ export const Hero = () => {
         <p className="text-lg text-gray-700 mb-8">
           Discover quality and care for your beloved companions.
         </p>
-        <Button className='px-6 py-3'>Shop Now</Button>
+        <Button onClick={goToProducts} className='px-6 py-3'>Shop Now</Button>
       </div>
     </section>
   );
