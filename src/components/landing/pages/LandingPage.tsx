@@ -6,10 +6,10 @@ import {Testimonials} from '@/components/landing/TestimonialSection/Testimonials
 
 
 
-export default function LandingPage() {
+export const  LandingPage = () => {
   return (
     <main
-      className="snap-y snap-mandatory h-screen overflow-y-scroll scroll-smooth bg-white text-gray-900"
+      className="snap-y snap-mandatory min-h-screen overflow-y-scroll scroll-smooth bg-white text-gray-900"
     >
       <section className="snap-start">
         <Hero />
