@@ -1,19 +1,50 @@
 'use client';
-import { Product } from "@/store/reducers/cartReducer";
-import { Cart } from "../Cart";
+
+import { useEffect, useState } from 'react';
+import { ProductCrud } from "@/types/products/product.types";
 import { ProductImage } from "../ProductImage";
 import { ProductInfo } from "../ProductInfo";
 import { RelatedProducts } from "../RelatedProducts";
+import { Cart } from "../Cart";
+import { helpHttp } from "@/lib/utils/http";
 
 interface ProductDetailPageProps {
-  product: Product;
+  productId: string;
 }
 
-export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ product }) => {
+export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ productId }) => {
+  const [product, setProduct] = useState<ProductCrud | null>(null);
+  const [relateProducts,setRelateProducts] = useState<  ProductCrud[] | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchProduct = async () => {
+      try {
+        const res = await helpHttp().get(`products/${productId}`);
+        if (!res.err) {
+          setRelateProducts(res.relatedProducts)
+          setProduct(res.product);
+        } else {
+          console.error("Error al obtener el producto:", res.status);
+        }
+      } catch (err) {
+        console.error("Error en la solicitud:", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProduct();
+  }, [productId]);
+
+  if (loading) return <p className="text-center py-20">Cargando producto...</p>;
+
+  if (!product) return <p className="text-center py-20 text-red-500">Producto no encontrado.</p>;
+
   return (
     <section className="max-w-6xl mx-auto px-4 py-12">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-        <ProductImage imageUrl={product.imageUrl ?? ""} name={product.name} />
+        <ProductImage imageUrl={product.imageUrls?.[0] ?? ""} name={product.name} />
         <ProductInfo
           name={product.name}
           price={product.price}
@@ -22,8 +53,8 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ product })
         />
       </div>
       <div className="mt-20">
-        <RelatedProducts />
-        <Cart/>
+        <RelatedProducts relateProducts={relateProducts ?? []} />
+        <Cart />
       </div>
     </section>
   );

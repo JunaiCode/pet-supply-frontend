@@ -6,8 +6,6 @@ export const QuickLinks = ()=>{
           <ul className="space-y-2  sm:flex-col text-sm text-pink-700 flex justify-start  items-baseline gap-2 sm:items-center">
             <Link href="/" className="hover:text-pink-500 transition-colors">Home</Link>
             <Link href="/products" className="hover:text-pink-500 transition-colors">Products</Link>
-            <Link href="/contact" className="hover:text-pink-500 transition-colors">Contact</Link>
-            <Link href="/about" className="hover:text-pink-500 transition-colors">About Us</Link>
           </ul>
         </div>)
 }

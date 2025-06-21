@@ -4,21 +4,9 @@ import {
   clearCart,
   delFromCart,
 } from "@/store/actions/cartActions";
+import { ShoppingState } from "@/types/products/product.types";
 
-export interface Product {
-  id: string;
-  name: string;
-  description: string
-  price: number;
-  imageUrl?: string;
-  quantity?: number;
-}
 
-interface ShoppingState {
-  products: Product[];
-  cart: Product[];
-  total: number;
-}
 
 export const initialState: ShoppingState = {
   products: [],

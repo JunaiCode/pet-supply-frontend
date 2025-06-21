@@ -1,31 +1,35 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
 
-import { useState } from "react";
-import { ProductCard } from "./ProductCard";
-import { Product } from "@/store/reducers/cartReducer";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { Product } from "@/types/products/product.types";
+import { ProductCard } from "./ProductCard";
 
 interface ProductCatalogProps {
   products: Product[];
-  itemsPerPage?: number;
+  filters: Record<string, any>;
+  limit: string | number;
+  setFilters: (filters: Record<string, any>) => void;
 }
 
 export const ProductCatalog = ({
   products,
-  itemsPerPage = 8,
+  filters,
+  limit,
+  setFilters,
 }: ProductCatalogProps) => {
-  const [currentPage, setCurrentPage] = useState(1);
-  const totalPages = Math.ceil(products.length / itemsPerPage);
-
-  const startIndex = (currentPage - 1) * itemsPerPage;
-  const paginatedProducts = products.slice(startIndex, startIndex + itemsPerPage);
+  const currentPage = filters.page || 1;
 
   const goToPreviousPage = () => {
-    if (currentPage > 1) setCurrentPage(currentPage - 1);
+    if (currentPage > 1) {
+      setFilters({ ...filters, page: currentPage - 1 });
+    }
   };
 
   const goToNextPage = () => {
-    if (currentPage < totalPages) setCurrentPage(currentPage + 1);
+    if (products.length === Number(limit)) {
+      setFilters({ ...filters, page: currentPage + 1 });
+    }
   };
 
   return (
@@ -37,7 +41,7 @@ export const ProductCatalog = ({
       ) : (
         <>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-x-6 gap-y-10">
-            {paginatedProducts.map((product) => (
+            {products.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}
           </div>
@@ -54,12 +58,12 @@ export const ProductCatalog = ({
             </button>
 
             <span className="text-base font-medium">
-              Page {currentPage} of {totalPages}
+              Página {currentPage}
             </span>
 
             <button
               onClick={goToNextPage}
-              disabled={currentPage === totalPages}
+              disabled={products.length < Number(limit)}
               className="p-2 rounded-full hover:bg-pink-100 disabled:opacity-30"
               aria-label="Next Page"
             >

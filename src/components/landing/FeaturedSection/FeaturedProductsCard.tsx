@@ -1,19 +1,25 @@
-import Image from 'next/image';
+import { Product } from "@/types/products/product.types";
+import Image from "next/image";
 
-export const FeaturedProductsCard = ({ index }: { index: number }) => {
+type Props = {
+  product: Product;
+};
+
+export const FeaturedProductsCard = ({ product }: Props) => {
+  console.log(product.imageUrls?.[0].toString());
   return (
-    <div className="inline-block w-64 flex-shrink-0 bg-white rounded-xl shadow-md p-4 text-center">
-      <div className="w-full h-40 bg-gray-200 rounded mb-4 relative">
-        {/* Demo image */}
-        <Image
-          src={`/images/demo-${index}.jpg`} // asegúrate de tener imágenes en public/images
-          alt={`Product ${index}`}
-          fill
-          className="object-cover rounded"
-        />
-      </div>
-      <h3 className="text-lg font-semibold text-gray-800 mb-1">Product {index}</h3>
-      <p className="text-sm text-gray-600">Short description of the product.</p>
+    <div>
+      <Image
+        src={product.imageUrls?.[0] ?? "/placeholder.png"}
+        alt={product.name}
+        width={240}
+        height={160}
+        className="w-full h-40 object-cover"
+        style={{ objectFit: "cover" }}
+      />
+      <h3 className="mt-2 font-bold text-lg">{product.name}</h3>
+      <p className="text-sm text-gray-600">{product.description}</p>
+      <p className="mt-1 text-pink-600 font-semibold">${product.price.toFixed(2)}</p>
     </div>
   );
 };

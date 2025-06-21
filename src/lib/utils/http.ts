@@ -1,25 +1,31 @@
-import { HelpHttp, RequestOptions } from '@/types/util/http.types'; // ajusta según la ubicación
+// helpers/helpHttp.ts
+export const helpHttp = () => {
+  const baseUrl = "http://localhost:8080/api/";
 
-export const helpHttp = (): HelpHttp => {
-  const customFetch = (endpoint: string, options: RequestOptions = {}) => {
+  const customFetch = (endpoint: string, options: RequestInit = {}) => {
     const defaultHeaders = {
       accept: "application/json",
     };
 
     const controller = new AbortController();
     options.signal = controller.signal;
-
     options.method = options.method || "GET";
+
+    const isFormData = options.body instanceof FormData;
+
     options.headers = options.headers
       ? { ...options.headers, ...defaultHeaders }
       : defaultHeaders;
 
-    options.body = options.body ? JSON.stringify(options.body) : false;
-    if (!options.body) delete options.body;
+    // No transformar FormData, sí transformar objetos JSON
+    if (!isFormData && options.body && typeof options.body === "object") {
+      options.body = JSON.stringify(options.body);
+      options.headers["Content-Type"] = "application/json";
+    }
 
     setTimeout(() => controller.abort(), 3000);
 
-    return fetch(endpoint, options)
+    return fetch(`${baseUrl}${endpoint}`, options)
       .then((res) =>
         res.ok
           ? res.json()
@@ -33,18 +39,9 @@ export const helpHttp = (): HelpHttp => {
   };
 
   return {
-    get: (url, options) => customFetch(url, options),
-    post: (url, options = {}) => {
-      options.method = "POST";
-      return customFetch(url, options);
-    },
-    put: (url, options = {}) => {
-      options.method = "PUT";
-      return customFetch(url, options);
-    },
-    del: (url, options = {}) => {
-      options.method = "DELETE";
-      return customFetch(url, options);
-    },
+    get: (url: string, options = {}) => customFetch(url, options),
+    post: (url: string, options = {}) => customFetch(url, { ...options, method: "POST" }),
+    put: (url: string, options = {}) => customFetch(url, { ...options, method: "PUT" }),
+    del: (url: string, options = {}) => customFetch(url, { ...options, method: "DELETE" }),
   };
 };
