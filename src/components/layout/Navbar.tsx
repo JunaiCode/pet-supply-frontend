@@ -31,11 +31,11 @@ export const Navbar = () => {
       localStorage.setItem('jwt', res.access_token); // Save token
       router.push('/managment');
     } else {
-      setError('Email no autorizado');
+      setError('Email Unauthorized');
     }
   } catch (err) {
-    console.error("Error en verifyAdmin:", err);
-    setError('Error al verificar');
+    console.error("Error to verifyAdmin:", err);
+    setError('Error to verify role');
   }
 };
 
@@ -107,7 +107,7 @@ export const Navbar = () => {
             <div className="flex flex-col space-y-2 mt-2">
               <input
                 type="email"
-                placeholder="Ingresa tu email"
+                placeholder="Insert your email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 className="border px-2 py-1 rounded text-sm"

@@ -57,7 +57,7 @@ export default function Page() {
         </div>
         <div className="lg:w-3/4 w-full">
           {loading ? (
-            <p className="text-center text-gray-500">Cargando productos...</p>
+            <p className="text-center text-gray-500">Loading Products...</p>
           ) : (
             <ProductsCrud
               products={products}
