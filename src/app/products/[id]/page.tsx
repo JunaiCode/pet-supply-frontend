@@ -1,3 +1,5 @@
+'use client';
+
 import { ProductDetailPage } from '@/components/products/pages/ProductDetailPage';
 
 interface ProductPageProps {
