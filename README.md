@@ -1,10 +1,24 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Pet Supply Frontend
 
-## Getting Started
+This is a **Next.js** project bootstrapped with `create-next-app`. It provides a product catalog for a pet supply store with filtering, search, and CRUD operations for admins.
 
-First, run the development server:
+## 🔧 Features
+
+- Product listing with filters (category, brand, stock, etc.)
+- Responsive layout
+- Admin-only CRUD interface (Create, Read, Update, Delete)
+- Cart integration
+- Related products suggestions
+- Backend API integration
+
+---
+
+## 🚀 Getting Started
+
+First, install dependencies and run the development server:
 
 ```bash
+npm install
 npm run dev
 # or
 yarn dev
@@ -12,25 +26,80 @@ yarn dev
 pnpm dev
 # or
 bun dev
-```
+Open http://localhost:3000 in your browser to see the result.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+You can start editing the page by modifying app/page.tsx. The page auto-updates as you edit the file.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+🛠 Admin Access for CRUD
+To access the product management dashboard (CRUD), follow these steps:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Click on the gear icon (⚙️) located at the top right of the homepage.
 
-## Learn More
+Enter the following email to authenticate:
 
+css
+Copy
+Edit
+admin@gmail.com
+If successful, you'll be redirected to the admin product CRUD panel.
+
+This protects the admin interface behind a basic email check for demonstration purposes.
+
+🧪 Technologies Used
+Next.js 15
+
+React with client-side rendering
+
+Tailwind CSS
+
+Redux Toolkit (for cart management)
+
+NestJS (backend)
+
+Render (backend deployment)
+
+Vercel (frontend deployment)
+
+🔍 Learn More
 To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Next.js Documentation – learn about Next.js features and API.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Learn Next.js – an interactive Next.js tutorial.
 
-## Deploy on Vercel
+Next.js GitHub – your feedback and contributions are welcome!
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+☁️ Deployment
+This app is deployed on Vercel. To deploy your own version:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Push the code to GitHub.
+
+Connect the repository to Vercel.
+
+Follow the deployment steps.
+
+For backend deployment, the API is hosted on Render.
+
+📂 Backend and Frontend Repos
+Frontend: https://github.com/tuusuario/pet-supply-frontend
+
+Backend: https://github.com/tuusuario/pet-supply-backend
+
+Replace the links with your actual GitHub repository URLs before sharing.
+
+📫 Contact
+Feel free to reach out with any questions or feedback!
+
+markdown
+Copy
+Edit
+
+📌 **Siguiente paso:** Guarda esto como `README.md` en la raíz de tu proyecto frontend.
+
+¿Quieres que también genere la versión del backend o un archivo PDF con esta información?
+
+
+
+
+
+
