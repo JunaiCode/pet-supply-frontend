@@ -40,7 +40,7 @@ export const ProductCatalog = ({
         <p className="text-gray-500">No products found.</p>
       ) : (
         <>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-x-6 gap-y-10">
+          <div className="grid gap-10 grid-cols-[repeat(auto-fit,minmax(250px,1fr))]">
             {products.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}
