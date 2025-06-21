@@ -14,7 +14,7 @@ interface ProductDetailPageProps {
 
 export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ productId }) => {
   const [product, setProduct] = useState<ProductCrud | null>(null);
-  const [relateProducts,setRelateProducts] = useState<  ProductCrud[] | null>(null);
+  const [relateProducts, setRelateProducts] = useState<ProductCrud[] | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -22,13 +22,13 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ productId 
       try {
         const res = await helpHttp().get(`products/${productId}`);
         if (!res.err) {
-          setRelateProducts(res.relatedProducts)
+          setRelateProducts(res.relatedProducts);
           setProduct(res.product);
         } else {
-          console.error("Error al obtener el producto:", res.status);
+          console.error("Error fetching product:", res.status);
         }
       } catch (err) {
-        console.error("Error en la solicitud:", err);
+        console.error("Fetch error:", err);
       } finally {
         setLoading(false);
       }
@@ -37,9 +37,9 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ productId 
     fetchProduct();
   }, [productId]);
 
-  if (loading) return <p className="text-center py-20">Cargando producto...</p>;
+  if (loading) return <p className="text-center py-20">Loading product...</p>;
 
-  if (!product) return <p className="text-center py-20 text-red-500">Producto no encontrado.</p>;
+  if (!product) return <p className="text-center py-20 text-red-500">Product not found.</p>;
 
   return (
     <section className="max-w-6xl mx-auto px-4 py-12">

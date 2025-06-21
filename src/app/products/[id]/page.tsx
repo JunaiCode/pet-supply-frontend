@@ -1,11 +1,8 @@
-'use client';
-
 import { ProductDetailPage } from '@/components/products/pages/ProductDetailPage';
+import {use} from 'react';
 
-interface ProductPageProps {
-  params: { id: string };
-}
+export default function ProductPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = use(params);
 
-export default function ProductPage({ params }: ProductPageProps) {
-  return <ProductDetailPage productId={params.id} />;
+  return <ProductDetailPage productId={id} />;
 }
