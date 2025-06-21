@@ -81,9 +81,9 @@ Follow the deployment steps.
 For backend deployment, the API is hosted on Render.
 
 📂 Backend and Frontend Repos
-Frontend: https://github.com/tuusuario/pet-supply-frontend
+Frontend: https://github.com/JunaiCode/pet-supply-frontend
 
-Backend: https://github.com/tuusuario/pet-supply-backend
+Backend: https://github.com/JunaiCode/pet-supply-backend
 
 Replace the links with your actual GitHub repository URLs before sharing.
 
