@@ -1,13 +1,16 @@
-'use client';
-import { useEffect, useState } from 'react';
-import { helpHttp } from '@/lib/utils/http';
-import { ProductCrud } from '@/types/products/product.types';
+"use client";
+import { useEffect, useState } from "react";
+import { helpHttp } from "@/lib/utils/http";
+import { ProductCrud } from "@/types/products/product.types";
 
 type Filters = {
   [key: string]: string | number;
 };
 
-export const useFetchProducts = (filters: Filters = {}, reloadKey: number = 0) => {
+export const useFetchProducts = (
+  filters: Filters = {},
+  reloadKey: number = 0
+) => {
   const [products, setProducts] = useState<ProductCrud[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -19,17 +22,17 @@ export const useFetchProducts = (filters: Filters = {}, reloadKey: number = 0) =
       }, {} as Record<string, string>)
     ).toString();
 
-    const endpoint = query ? `products/search?${query}` : 'products';
+    const endpoint = query ? `products/search?${query}` : "products";
     setLoading(true);
 
     helpHttp()
       .get(endpoint)
       .then((res) => {
-        if (!res.err) setProducts(res);
+        if (!res.err && Array.isArray(res)) setProducts(res);
         else setProducts([]);
       })
       .finally(() => setLoading(false));
-  }, [filters, reloadKey]); 
+  }, [filters, reloadKey]);
 
   return { products, loading };
 };

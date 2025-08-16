@@ -20,7 +20,8 @@ export const FeaturedProductsCarousel = () => {
     <div>
       <div className="relative w-full overflow-hidden">
         <div className="animate-marquee whitespace-nowrap flex gap-6">
-          {[...Array(2)].flatMap((_, outerIdx) =>
+          {
+          [...Array(2)].flatMap((_, outerIdx) =>
             (products || []).map((product) => (
               <FeaturedProductsCard
                 key={`${outerIdx}-${product.id}`}
