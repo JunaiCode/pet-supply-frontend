@@ -116,7 +116,7 @@ export const Navbar = () => {
                 onClick={verifyAdmin}
                 className="bg-purple-500 text-white text-sm px-2 py-1 rounded hover:bg-purple-600"
               >
-                Verificar
+                Verify
               </button>
               {error && <span className="text-red-500 text-sm">{error}</span>}
             </div>

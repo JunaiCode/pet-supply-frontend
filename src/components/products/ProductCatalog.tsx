@@ -58,7 +58,7 @@ export const ProductCatalog = ({
             </button>
 
             <span className="text-base font-medium">
-              Página {currentPage}
+              Page {currentPage}
             </span>
 
             <button
