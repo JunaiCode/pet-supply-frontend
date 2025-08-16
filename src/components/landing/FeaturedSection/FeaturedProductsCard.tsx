@@ -6,7 +6,6 @@ type Props = {
 };
 
 export const FeaturedProductsCard = ({ product }: Props) => {
-  console.log(product.imageUrls?.[0].toString());
   return (
     <div>
       <Image
