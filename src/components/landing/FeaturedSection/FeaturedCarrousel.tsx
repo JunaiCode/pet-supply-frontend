@@ -7,12 +7,11 @@ import { FeaturedProductsCard } from "./FeaturedProductsCard";
 export const FeaturedProductsCarousel = () => {
   const filters = useMemo(() => ({ limit: 5, availability: "true" }), []);
   const { products, loading } = useFetchProducts(filters);
-  console.log(products);
 
   if (loading) {
     return (
       <p className="text-center text-gray-500 py-4">
-        Cargando productos destacados...
+        Loading Featured Products...
       </p>
     );
   }
