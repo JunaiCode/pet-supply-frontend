@@ -1,14 +1,14 @@
 'use client';
 import { useEffect, useState } from 'react';
 import { helpHttp } from '@/lib/utils/http';
-import { ProductCrud } from '@/types/products/product.types';
+import { Product } from '@/types/products/product.types';
 
 type Filters = {
   [key: string]: string | number;
 };
 
 export const useFetchProducts = (filters: Filters = {}, reloadKey: number = 0) => {
-  const [products, setProducts] = useState<ProductCrud[]>([]);
+  const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
