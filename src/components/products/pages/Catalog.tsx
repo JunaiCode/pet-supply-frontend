@@ -17,7 +17,7 @@ export const ProductsPage = () => {
         </div>
         <div className="lg:w-3/4 w-full">
           {loading ? (
-            <p className="text-center text-gray-500">Cargando productos...</p>
+            <p className="text-center text-gray-500">Loading products...</p>
           ) : (
             <ProductCatalog products={products} filters={filters} limit={filters.limit} setFilters={setFilters} />
           )}
