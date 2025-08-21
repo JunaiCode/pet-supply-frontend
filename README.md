@@ -85,18 +85,9 @@ Frontend: https://github.com/JunaiCode/pet-supply-frontend
 
 Backend: https://github.com/JunaiCode/pet-supply-backend
 
-Replace the links with your actual GitHub repository URLs before sharing.
-
 📫 Contact
 Feel free to reach out with any questions or feedback!
 
-markdown
-Copy
-Edit
-
-📌 **Siguiente paso:** Guarda esto como `README.md` en la raíz de tu proyecto frontend.
-
-¿Quieres que también genere la versión del backend o un archivo PDF con esta información?
 
 
 
